@@ -31,7 +31,7 @@ resource "aws_instance" "webServer" {
     }
   
 }
-
+/*
 Note: ignore_changes: suppose you have modifed some resource setting outside of terrafrom,
 example you have added some tags, changed the instance type from t2.micro to t2.medium using
 aws console, which means this changes is note recorded in tfstate bcz you modified outside of 
@@ -42,7 +42,7 @@ of that resource will removed.
 
 So, in some cases, we really need to keep those changes, with actual resources. for this
 we give attributes in ignore_changes block. of lifecycle. like below.
-
+*/
 lifecycle {
     ignore_changes = [
         tags,
@@ -53,6 +53,7 @@ lifecycle {
     ]
 }
 
+/*
 Any changes unders this attribute will be ignored, even if tfstate file dosnt know about his
 and modifed outside of terraform. 
 
@@ -66,7 +67,7 @@ The create_before_destroy meta-argument changes this behavior so that the new re
 object is created first, and the prior object is destroyed after the replacement is created.
 
 # depends_on lifecycle args
-
+*/
 resource "aws_s3_bucket" "s3demo" {
 bucket = "mybucketfoxinious-${random_string.randoms3name. id}"
 }
@@ -76,6 +77,7 @@ length = 16
 special = false
 }
 
+/*
 In this example, terraform know, which resource is dependin on which resoure, eg. tf know
 that frist i have to create random string, beacse it is reference while creating bucket,
 and used in bucket name, so first tf will make random string ready, then it will be passed
@@ -87,5 +89,5 @@ at 2nd number. in that case we have to specify create this resource 1st then cre
 this is called implicite dependency, one antoher example is, suppose you want to create subent
 for subenet you have to give vpc id, so terraform understand that i have to create vpc first
 then subnet should be created.
-
+*/
 

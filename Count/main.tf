@@ -86,6 +86,7 @@ tags = {
 }
 }
 
+/*
 instance name in tfstate would be like below.
 aws_instance.web[0]
 aws_instance.web[1]
@@ -94,5 +95,5 @@ aws_instance.web[3]
 aws_instance.web[4]
 
 <providerName> _ <resourceType> . <ResourceName> <[ ]-indexNumber>
-
+*/
 

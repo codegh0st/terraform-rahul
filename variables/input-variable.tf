@@ -17,7 +17,7 @@ variable "instanceType" { #if we dont pass runtime value (terraform apply -var="
   default = "t2.micro"
 }
 
-# creating Ubuntu instance using local variables
+# creating Ubuntu instance using input variables, Best practice is to define above variables in varaibale.tf ifle 
 resource "aws_instance" "rahuls-ubuntu-server" {
     ami = var.amiId
     instance_type = var.instanceType
@@ -28,10 +28,16 @@ resource "aws_instance" "rahuls-ubuntu-server" {
 /*
 # NOTE: How to pass value in run time?
 there are multiple way to pass value in runtime eg. using -var option, environemt variable,
-by creaging seperate file .
+by creaging seperate file with .tfvars extentions
+
+variable.tf is used to define the varables
+variable.tfvars is uded to pass the variable in any configuraion file. 
+
+Later i will explore more. 
 
 terraform apply -var="amiId=ami-ubuntudcaca348a0e68" -var="ec2count=1" -var="instanceType=t2.medium"
 
-In root module you can create seperate file for variables 'variable.tf' 
+NOTE: In root module you can create seperate file for variables 'variable.tf' 
 
 */
+
