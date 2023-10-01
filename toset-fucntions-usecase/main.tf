@@ -13,4 +13,4 @@ Note: for_each only takes set of string and map as arumet. var.userName was list
 i have typecated into a 'set' and given to for_each fucnion
 for furhter processing. 
 
-*/
+*/ 
